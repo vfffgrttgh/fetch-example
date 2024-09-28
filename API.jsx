@@ -1,15 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react'
 
-function API() {
+function App() {
+  const [value, setter] = useState({})
+
+  async function fetchData(url) {
+    const response = await fetch(url);
+
+    return response.json()
+  }
+
   useEffect(() => {
-    fetch("https://youtube.com")
-    .then(document.write("API is caught!");
+    fetchData("url").then(res => setter(res))
   }, [])
-  return(
-    <>
-      
-    </>
-  );
-}
 
-export default API;
+  return (
+    <>
+      <h1>[value.props_of_data}</h1>
+    </>
+  )
+}
